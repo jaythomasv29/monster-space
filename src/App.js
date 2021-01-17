@@ -11,6 +11,7 @@ class App extends Component {
     this.state = {
       monsters: [], // initial state of monsters is an empty array
       searchField: "", //initial state of searchField
+      title: ''
     };
   }
 
@@ -32,17 +33,25 @@ class App extends Component {
   //when creating your own class method, you can use a function
   // a function will automatically bind to the class
   handleChange = (e) => {  
-    this.setState({ searchField: e.target.value });
+    this.setState({ 
+      searchField: e.target.value,
+      title: e.target.value
+  
+    });
   }
 
   render() {
-    const { monsters, searchField } = this.state;
+    const { monsters, searchField, title } = this.state;
     const filteredMonsters = monsters.filter((monster) =>
       monster.name.toLowerCase().includes(searchField.toLowerCase())
     );
     return (
       <div className="App">
       <h1 className="app-title">Monster Space</h1>
+        {(title.length > 0) &&
+          <h3 className="search-text">Result for '{title}'</h3>
+        
+        }
         <SearchBox
           placeholder="search monsters"
           handleChange={this.handleChange}
