@@ -17,7 +17,7 @@ class App extends Component {
   // a lifecycle method that runs when the app mounts
   componentDidMount() {
     // return a promise
-    fetch("http://jsonplaceholder.typicode.com/users")
+    fetch("https://jsonplaceholder.typicode.com/users")
       // if promise is successful, it returns a response
       // get response and change format to JSON
       .then((response) => response.json())
